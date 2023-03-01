@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Course</title>
+    <style>
+      body {
+        background-color: antiquewhite;
+      }
+
+      h1 {
+        color: black;
+        text-align: center;
+      }
+
+      table {
+        display: block;
+        margin: auto;
+        width: 50%;
+      }
+      table,
+      tr,
+      td {
+        border: 1px solid black;
+        padding: 0.5em;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome To KPM Beranang</h1>
+    <h2>Update Course</h2>
+    <form action="save_update_course/{{data.code}}" method="post">
+      {% csrf_token %} Course code:
+      <input
+        type="text"
+        name="code"
+        value="{{data.code}}"
+        disabled="False"
+      /><br /><br />
+      Course description:
+      <input type="text" name="desc" value="{{data.description}}" />
+      <br />
+      <input type="submit" value="Save" />
+    </form>
+
+    <br />
+    <br />
+    <a href="{% url 'course' %}">Back</a>
+  </body>
+</html>

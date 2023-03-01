@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course</title>
+    <style>
+      body {
+        background-color: antiquewhite;
+      }
+
+      img {
+        display: block;
+        margin: auto;
+        width: 30%;
+        height: auto;
+      }
+      h1,
+      h2 {
+        color: black;
+        text-align: center;
+      }
+
+      form {
+        display: table;
+      }
+      .row {
+        display: table-row;
+      }
+      label {
+        display: table-cell;
+      }
+
+      input {
+        margin-bottom: 0.5rem;
+        display: table-cell;
+      }
+
+      ul {
+        border: 1px solid;
+        width: 50%;
+        padding: 0;
+      }
+      li {
+        text-align: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 0.5rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: blue;
+      }
+
+      center {
+        display: flex;
+        margin: auto;
+        border: 1px solid;
+        width: 60%;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/ms/a/af/Logo_kpm.gif"
+      alt="logo kpm beranang"
+    />
+    <h1>WELCOME TO KPM BERANANG</h1>
+    <h2>Insert New Course</h2>
+
+    {% comment %} utk semua if, elif, else kena ada endif {% endcomment %} {%
+    comment %} utk semua yg berkaitan foreign key, biar user pilih drpd
+    dropdown. jangan bagi dia pilih. {% endcomment %}
+    <center>
+      <!--action tu pergi views yg mana. contoh kalau form course ni, dia pergi views course. save-->
+      <form action="new_course" method="post">
+        <!--method tu utk specify ita nak buat apa. eg: post tu send values dari page html tu pergi views. views hantar kepada model. -->
+        {% csrf_token %}
+        <p class="row">
+          <!--ni utk token key for security. post wajib kena ada csrf. utk secure data.-->
+          <label for="code">Course code:</label
+          ><input type="text" name="code" id="code" />
+        </p>
+        <p class="row">
+          <label for="description">Course description:</label>
+          <input type="text" name="description" id="description" />
+        </p>
+        <input type="submit" value="SAVE" />
+      </form>
+
+      <br />
+      <br />
+      {{message}} <br />
+      <a href="{% url 'index' %}" style="display: block">Go back</a>
+    </center>
+  </body>
+</html>

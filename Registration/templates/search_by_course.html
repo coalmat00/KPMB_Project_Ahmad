@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search student</title>
+    <style>
+      body {
+        background-color: antiquewhite;
+      }
+      label {
+        display: inline-block;
+        margin: 0.5rem;
+      }
+
+      table {
+        width: 50%;
+        display: block;
+        margin: auto;
+      }
+      table,
+      tr,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      td {
+        width: 16.67%; /* adjust this value as needed */
+        word-wrap: break-word;
+      }
+      .header {
+        font-weight: 900;
+        text-align: center;
+        border: 2px solid black;
+      }
+      .center {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="center">WELCOME TO KPM BERANANG</h1>
+    <h2 class="center">Search Student By Course</h2>
+
+    <!-- utk foreign key sahaja, bila tulis nama dkt td header tu, kena guna course_code_id -->
+
+    <form action="search_by_course" method="get" class="center">
+      <label for="s_course">Student's Course:</label>
+      <select name="s_course">
+        <option value="Course: Null">Select Course</option>
+        {% for data in allcourse %}
+        <option value="{{data.code}}">{{data.code}}</option>
+        {% endfor %}
+      </select>
+
+      <input type="submit" value="SEARCH" />
+    </form>
+
+    <!-- yg ni utk dia display only kalau ada data. kalau time baru buka page tu tkde data. -->
+    <!-- 1 curly braces utk buat condition -->
+    <!-- double curly braces utk display daripada view. -->
+    {% if course != None %} {% if number != 0 %}
+    <p class="center">List of {{course}} students</p>
+    <table>
+      <tr class="header">
+        <td>ID</td>
+        <td>Name</td>
+        <td>Address</td>
+        <td>Course Code</td>
+        <td>Phone</td>
+        <td>Status</td>
+      </tr>
+      {% for value in student %}
+      <tr>
+        <td>{{value.id}}</td>
+        <td>{{value.name}}</td>
+        <td>{{value.address}}</td>
+        <td>{{value.course_code_id}}</td>
+        <td>{{value.phone_number}}</td>
+        <td>{{value.status}}</td>
+      </tr>
+      {% endfor %}
+      <!--bila baca data, dia akan ambik key dari dict dlm views. bukan value dia.-->
+    </table>
+    <p>{{message}}</p>
+    {% else %}
+    <p>Student {{course}} not found.</p>
+    {% endif %} {% endif %}
+    <a href="{% url 'index' %}" class="center">Go back</a>
+  </body>
+</html>
+
+<!-- kalau search by course. kena guna dropdown je risau
+user type benda lain. -->

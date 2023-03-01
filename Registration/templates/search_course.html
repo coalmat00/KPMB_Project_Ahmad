@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Course</title>
+    <style>
+      body {
+        background-color: antiquewhite;
+      }
+
+      h1 {
+        color: black;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Search Course</h1>
+
+    <form action="search_course" method="get">
+      <label>Enter Course: <input type="text" name="c_code" /></label>
+      <input type="submit" value="Search" />
+    </form>
+    <p>
+      {% for value in data %} code : {{value.code}} <br /><br />
+      description: {{value.description}} <br /><br />
+      {% endfor %}
+    </p>
+    <br />
+    {{msg}}
+  </body>
+</html>
+
+<!--action tu utk kalau dia click, dia akan cari views mana yg dia akan execute.-->

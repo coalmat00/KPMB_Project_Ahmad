@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student</title>
+    <style>
+      body {
+        background-color: antiquewhite;
+      }
+      label {
+        display: inline-block;
+        margin: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>WELCOME TO KPM BERANANG</h1>
+    <h2>Insert New Student</h2>
+
+    <!--action tu pergi views yg mana. contoh kalau tekan button save-->
+    <form action="new_student" method="post">
+      <!--method tu utk specify ita nak buat apa. eg: post tu send values dari page html tu pergi views. views hantar kepada model. -->
+      {% csrf_token %}
+      <!--ni utk token key for security. post wajib kena ada csrf. utk secure data.-->
+      <label for="id">Student ID:<input type="text" name="id" /></label>
+      <br /><label for="name"
+        >Student Name:<input type="text" name="name" /></label
+      ><br /><label for="address"
+        >Student Address:<input type="text" name="address" /></label
+      ><br /><label for="phone_number"
+        >Phone Number:<input type="text" name="phone_number" /></label
+      ><br />
+      Course code:
+      <select name="s_course">
+        {% for value in allcourse %}
+        <!-- {{value.code}} yg ni utk value. yg kanan dia tu utk display. -->
+        <option value="{{value.code}}">{{value.code}}</option>
+        {% endfor %}
+      </select>
+      <br />
+
+      <input type="submit" value="SAVE" />
+    </form>
+
+    <p>{{message}}</p>
+    <a href="{% url 'index' %}">Go back</a>
+  </body>
+</html>

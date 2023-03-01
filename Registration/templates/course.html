@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course</title>
+    <style>
+      body {
+        background-color: antiquewhite;
+      }
+
+      h1 {
+        color: black;
+        text-align: center;
+      }
+
+      table {
+        display: block;
+        margin: auto;
+        width: 50%;
+      }
+      table,
+      tr,
+      td {
+        border: 1px solid black;
+        padding: 0.5em;
+        border-collapse: collapse;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Course</h1>
+
+    <table>
+      <tr>
+        <td class="table-head">CODE</td>
+        <td class="table-head">DESCRIPTION</td>
+        <td class="table-head">UPDATE</td>
+        <td class="table-head">DELETE</td>
+      </tr>
+      {% for data in allcourse %}
+      <tr>
+        <td>{{data.code}}</td>
+        <td>{{data.description}}</td>
+        <td><a href="update_course/{{data.code}}">Update</a></td>
+        <td><a href="delete_course/{{data.code}}">Delete</a></td>
+        <!--update_course/{{data.code}} ni tk thu utk apa-->
+      </tr>
+      {%endfor%}
+      <!--curly braces dgn percent tu kena rapat.-->
+    </table>
+    <ul></ul>
+    <a href="{% url 'new_course' %}">Insert new course</a>
+    <br />
+    <a href="{% url 'index' %}">Go back</a>
+  </body>
+</html>

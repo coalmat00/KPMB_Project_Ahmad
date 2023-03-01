@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: antiquewhite;
+      }
+
+      img {
+        display: block;
+        margin: auto;
+        width: 30%;
+        height: auto;
+      }
+      h1,
+      h2 {
+        color: black;
+        text-align: center;
+      }
+
+      ul {
+        border: 1px solid;
+        width: 50%;
+        padding: 0;
+      }
+      li {
+        text-align: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 0.5rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/ms/a/af/Logo_kpm.gif"
+      alt="logo kpm beranang"
+    />
+    <h1>WELCOME TO KPM BERANANG</h1>
+    <center>
+      <h2>Select options:</h2>
+      <ul>
+        <a href="{% url 'new_course' %}"><li>New Course</li></a>
+        <a href="{% url 'course' %}"><li>Course</li></a>
+        <a href="{% url 'search_course' %}"><li>Search Course</li></a>
+        <a href="{% url 'new_student' %}"><li>New Student</li></a>
+        {% comment %}
+        <a href="{% url 'search_student' %}"><li>Search Student</li></a>
+        {% endcomment %}
+        <a href="{% url 'search_by_course' %}"
+          ><li>Search Student by Course</li></a
+        >
+
+        {% comment %}
+        <a href="{% url 'search_student' %}"><li>Search Student</li></a>
+        {% endcomment %}
+      </ul>
+    </center>
+  </body>
+</html>
